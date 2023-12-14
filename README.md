@@ -16,84 +16,84 @@ linux os (ubuntu)
 ## Starting Minikube
 
 ### 1. Start Minikube:
-    ```bash
-    minikube start
-    ```
+```bash
+minikube start
+```
 
 ## Setting up PostgreSQL 
 
 ### 1. Create your connection configuration and secrets:
-    ```bash
-    # Insert PostgreSQL secret YAML here
-    kubectl apply -f postgres-secret.yaml
-    ```
+```bash
+# Insert PostgreSQL secret YAML here
+kubectl apply -f postgres-secret.yaml
+```
 ### 2. Then verify that the contents are stored correctly:
-    ```bash
-    kubectl get secret postgres-secret
-    ```
+```bash
+kubectl get secret postgres-secret
+```
 ### 3. Create PersistentVolume and PersistentVolumeClaim:
-    ```bash
-    kubectl apply -f postgres-pv.yaml # Insert PostgreSQL PersistentVolume YAML here
-    kubectl apply -f postgres-pvc.yaml # Insert PostgreSQL PersistentVolumeClaim YAML here
-    ```
+```bash
+kubectl apply -f postgres-pv.yaml # Insert PostgreSQL PersistentVolume YAML here
+kubectl apply -f postgres-pvc.yaml # Insert PostgreSQL PersistentVolumeClaim YAML here
+```
 ### 4. Now,check that the persistent volume is available:
-    ```bash
-    kubectl get pv
-    ```
+```bash
+kubectl get pv
+```
 ### 5. Now,check that the persistent volume claim is bound:
-    ```bash
-    kubectl get pvc
-    ```
+```bash
+kubectl get pvc
+```
 
 ### 6. Create PostgreSQL deployment:
-    ```bash
-    # Insert PostgreSQL deployment YAML here
-    kubectl apply -f postgres-deployment.yaml
-    ```
+```bash
+# Insert PostgreSQL deployment YAML here
+kubectl apply -f postgres-deployment.yaml
+```
 ### 7. Create PostgreSQL Service:
-    ```bash
-    # Insert PostgreSQL Service YAML here
-    kubectl apply -f postgres-svc.yaml
-    ```
+```bash
+# Insert PostgreSQL Service YAML here
+kubectl apply -f postgres-svc.yaml
+```
 
 
 ## Deploying Calcom
 
 ### 1. Create your secrets:
-    ```bash
-    # Insert Calcom secret YAML here
-    kubectl apply -f calcom-secret.yaml
-    ```
+```bash
+# Insert Calcom secret YAML here
+kubectl apply -f calcom-secret.yaml
+```
 ### 2. Create your  configMap:
-    ```bash
-    # Insert Calcom Config YAML here
-    kubectl apply -f calcom-config.yaml
-    ```
+```bash
+# Insert Calcom Config YAML here
+kubectl apply -f calcom-config.yaml
+```
 
 ### 3. Deploy Calcom:
-    ```bash
-    # Insert Calcom deployment YAML here
-    kubectl apply -f calcom-deployment.yaml
-    ```
+```bash
+# Insert Calcom deployment YAML here
+kubectl apply -f calcom-deployment.yaml
+```
 ### 4. Create Calcom Service:
-    ```bash
-    # Insert Calcom Service YAML here
-    kubectl apply -f calcom-svc.yaml
-    ```
+```bash
+# Insert Calcom Service YAML here
+kubectl apply -f calcom-svc.yaml
+```
 
 ## Deploying Studio
 
 ### 1. Deploy Studio:
-    ```bash
-    # Insert Studio deployment YAML here
-    kubectl apply -f studio-deployment.yaml
-    ```
+```bash
+# Insert Studio deployment YAML here
+kubectl apply -f studio-deployment.yaml
+```
 
 ### 2. Create Calcom Service:
-    ```bash
-    # Insert Studio Service YAML here
-    kubectl apply -f studo-svc.yaml
-    ```
+```bash
+# Insert Studio Service YAML here
+kubectl apply -f studo-svc.yaml
+```
 
 # Setting Up Ingress in Kubernetes
 
