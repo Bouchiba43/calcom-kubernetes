@@ -127,7 +127,7 @@ minikube addons enable ingress
     ```bash
     <minikube-ip> your-hostname.com
     ```
-    Replace "minikube-ip" with the IP address of your Minikube cluster and your-hostname.com with the desired hostname.
+    Replace <minikube-ip> with the IP address of your Minikube cluster and your-hostname.com with the desired hostname.
 
 5. **Save the File:**
          Save the changes (in nano, it's Ctrl + O, then Enter to confirm, and Ctrl + X to exit).
