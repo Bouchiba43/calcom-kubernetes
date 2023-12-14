@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: calcom-ingress
+spec:
+  rules:
+    - host: calcom-bouchiba.com # Replace with your desired hostname or use '*'
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: calcom
+                port:
+                  number: 80

@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calcom
+spec:
+  strategy:
+    type: RollingUpdate
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calcom
+  template:
+    metadata:
+      labels:
+        app: calcom
+    spec:
+      containers:
+        - name: calcom
+          image: calcom/cal.com
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: calcom-secret
+                  key: url
+            - name: NEXTAUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: calcom-secret
+                  key: NEXTAUTH_SECRET
+            - name: CALENDSO_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: calcom-secret
+                  key: CALENDSO_ENCRYPTION_KEY
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: calcom-secret
+                  key: username
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: calcom-secret
+                  key: database
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: calcom-secret
+                  key: password
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: calcom-secret
+                  key: host
+            - name: POSTGRES_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: calcom-secret
+                  key: port
+            - name: NEXT_PUBLIC_WEBAPP_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: calcom-config
+                  key: NEXT_PUBLIC_WEBAPP_URL
+            - name: NODE_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: calcom-config
+                  key: NODE_ENV
+            - name: CALCOM_TELEMETRY_DISABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: calcom-config
+                  key: CALCOM_TELEMETRY_DISABLED
+            - name: NEXT_PUBLIC_LICENSE_CONSENT
+              valueFrom:
+                configMapKeyRef:
+                  name: calcom-config
+                  key: NEXT_PUBLIC_LICENSE_CONSENT
+          volumeMounts:
+            - mountPath: /app/config
+              name: calcom-pv-storage
+      volumes:
+        - name: calcom-pv-storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc
+
