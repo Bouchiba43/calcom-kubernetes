@@ -86,5 +86,4 @@ spec:
       volumes:
         - name: calcom-pv-storage
           persistentVolumeClaim:
-            claimName: postgres-pvc
-
+            claimName: postgres-pvc-postgres-0

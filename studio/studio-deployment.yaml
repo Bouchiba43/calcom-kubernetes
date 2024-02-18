@@ -84,4 +84,4 @@ spec:
       volumes:
         - name: studio-pv-storage
           persistentVolumeClaim:
-            claimName: postgres-pvc
+            claimName: postgres-pvc-postgres-0
